@@ -27,7 +27,15 @@ english_level: basic
 | 练习 | ⬜ | 未开始 |
 | 复习 | ⬜ | 未定 |
 
-## 材料说明`r`n`r`n教材原文不随公开仓库发布；本档案保留词块、语法、练习与学习记录。`r`n`r`n## 生词与词块
+## 材料原文
+
+> 来源：`D:\桌面\大三学习\英语\新概念2 电子课本.pdf`（扫描版）第 15 页（书本页码 12），OCR 提取；已与用户提供的 txt 全文 `D:\桌面\大三学习\英语\新概念英语第2册.txt`（GBK 编码，含各课参考译文）逐词核对一致，无问题。之后各课优先以 txt 为准，PDF 作图片对照。
+
+课文说明：First listen and then answer the question. **Why did the writer complain to the people behind him?**
+
+> Last week I went to the theatre. I had a very good seat. The play was very interesting. I did not enjoy it. A young man and a young woman were sitting behind me. They were talking loudly. I got very angry. I could not hear the actors. I turned round. I looked at the man and the woman angrily. They did not pay any attention. In the end, I could not bear it. I turned round again. 'I can't hear a word!' I said angrily. 'It's none of your business,' the young man said rudely. 'This is a private conversation!'
+
+## 生词与词块
 
 > 来源：教材第 15 页 New words and expressions（音标为通行词典标注，扫描件 OCR 音标失真；中文释义按通行版本，以书本为准）。
 
@@ -92,7 +100,7 @@ english_level: basic
 
 - 听力：新概念 2 配套音频（每日英语听力 App / B 站 / 喜马拉雅），方法：先盲听 → 看课文 → 影子跟读
 - 语法：新概念 2 每课自带 Key structures + 练习（主课程）；参考书可选张道真《实用英语语法》或赖世雄《经典英语语法》；视频可选 B 站新概念 2 精讲
-- txt 全文：`[本地资料目录]`（GBK 编码，含各课参考译文）
+- txt 全文：`D:\桌面\大三学习\英语\新概念英语第2册.txt`（GBK 编码，含各课参考译文）
 
 ## 暂停记录
 
@@ -105,4 +113,3 @@ english_level: basic
 |------|---------|------|
 | 生词（随学随加，已学 theatre） | 2026-09-01（+1 天） | 生词本 E→C / C→E |
 | 背诵回检 | 学完后 +3 天 | 抽背回检 |
-

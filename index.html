@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="祁清玄的个人主页：数学、代码、书和一些偶尔写下的东西。">
+  <meta name="theme-color" content="#b13b2d">
+  <title>祁清玄</title>
+  <style>
+    @font-face {
+      font-family: "QXChinese";
+      src: url("./assets/noto-sans-sc-subset.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "QXLatin";
+      src: url("./assets/barlow-condensed-bold-subset.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      --paper: #efe8d8;
+      --ink: #111210;
+      --red: #b13b2d;
+      --signal: #da4933;
+      --page: 1220px;
+      --font-cn: "QXChinese", sans-serif;
+      --font-latin: "QXLatin", "QXChinese", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+    body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: var(--font-cn); line-height: 1.65; }
+    a { color: inherit; }
+    .page { width: min(var(--page), calc(100% - 8vw)); margin-inline: auto; }
+    .skip-link { position: fixed; top: 10px; left: 10px; z-index: 100; padding: 9px 12px; background: var(--paper); color: var(--ink); font-weight: 800; transform: translateY(-160%); }
+    .skip-link:focus { transform: none; }
+    :focus-visible { outline: 3px solid #f0bd38; outline-offset: 4px; }
+
+    .hero { min-height: 100svh; position: relative; overflow: hidden; isolation: isolate; display: grid; align-items: center; background: var(--paper); }
+    .hero::after { content: ""; position: absolute; z-index: -1; inset: 0 0 0 auto; width: 23%; background: var(--red); clip-path: polygon(22% 0,100% 0,100% 100%,0 100%); animation: cover-cut .42s cubic-bezier(.12,.82,.2,1) both; }
+    .hero-nav { position: absolute; inset: 0 0 auto; z-index: 30; height: 62px; color: var(--ink); border-bottom: 1px solid rgba(17,18,16,.35); }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-mark, .nav-links a { font-family: var(--font-latin); font-size: .68rem; font-weight: 600; line-height: 1; letter-spacing: .12em; text-decoration: none; }
+    .nav-links { display: flex; gap: clamp(18px, 3vw, 42px); }
+    .nav-links a { position: relative; padding: 8px 5px 6px; }
+    .nav-links a::before { content: ""; position: absolute; z-index: -1; inset: 2px -7px; width: 0; background: var(--signal); transform: skewX(-13deg); transition: width .16s ease; }
+    .nav-links a:hover::before, .nav-links a:focus-visible::before { width: calc(100% + 14px); }
+
+    .cover-inner { min-height: 100svh; display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); align-items: center; padding-block: 110px 76px; }
+    .cover-copy { grid-column: 2 / 7; position: relative; z-index: 2; }
+    .cover-copy h1 { margin: 0; font-family: "QXChinese", sans-serif; font-size: clamp(5rem, 10vw, 9.2rem); font-weight: 780; line-height: .9; letter-spacing: -.07em; clip-path: inset(0 100% 0 0); animation: name-reveal .5s .1s cubic-bezier(.12,.82,.2,1) forwards; }
+    .intro { max-width: 29em; margin: clamp(38px,6vh,66px) 0 0; padding-left: 22px; border-left: 3px solid var(--red); font-family: var(--font-cn); font-size: clamp(1rem,1.45vw,1.2rem); font-weight: 400; line-height: 2; }
+    .portrait { grid-column: 8 / 12; position: relative; z-index: 2; justify-self: center; width: min(30vw,390px); margin: 0; clip-path: inset(0 100% 0 0); animation: portrait-reveal .45s .2s cubic-bezier(.12,.82,.2,1) forwards; }
+    .portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 42%; filter: saturate(.78) contrast(1.04); clip-path: polygon(0 0,100% 0,100% 88%,88% 100%,0 100%); }
+    .cover-meta { position: absolute; right: 4.5%; bottom: 6%; z-index: 2; color: var(--paper); font-family: var(--font-latin); font-size: .62rem; font-weight: 600; letter-spacing: .14em; writing-mode: vertical-rl; }
+
+    .about { min-height: 650px; position: relative; overflow: hidden; display: grid; align-items: center; border-top: 8px solid var(--ink); }
+    .about::before { content: ""; position: absolute; left: -14%; top: -45%; width: 39%; height: 150%; background: var(--red); transform: rotate(14deg); }
+    .about-inner { position: relative; display: grid; grid-template-columns: .7fr 1fr; gap: clamp(50px, 10vw, 145px); align-items: center; padding-block: 110px; }
+    .section-id { font-family: var(--font-latin); font-size: .66rem; font-weight: 700; line-height: 1; letter-spacing: .13em; }
+    .section-id::after { content: ""; display: block; width: 72px; height: 6px; margin-top: 13px; background: currentColor; }
+    .about h2, .projects h2, .contact h2 { font-family: var(--font-cn); font-weight: 780; letter-spacing: -.07em; }
+    .about h2 { margin: 34px 0 0; font-size: clamp(3.4rem, 6.5vw, 6.3rem); line-height: .96; }
+    .about-copy { margin: 9vh 0 0; padding-left: 26px; border-left: 8px solid var(--ink); font-family: var(--font-cn); font-size: clamp(1rem, 1.5vw, 1.16rem); font-weight: 400; line-height: 2; }
+
+    .records { position: relative; overflow: hidden; padding-block: 78px 84px; background: var(--red); color: var(--paper); }
+    .records::after { content: ""; position: absolute; z-index: 0; inset: -20% -10% -25% 58%; background: var(--ink); transform: rotate(-10deg); }
+    .records-inner { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); gap: 34px 24px; }
+    .record { margin: 0; font-family: var(--font-cn); line-height: 1.25; }
+    .record time { display: block; margin-bottom: 8px; font-family: var(--font-latin); font-size: .65rem; font-weight: 700; letter-spacing: .14em; }
+    .record strong { display: block; font-size: .8rem; font-weight: 650; }
+    .record small { display: block; margin-top: 6px; font-size: .52rem; letter-spacing: .08em; }
+    .record-main { grid-column: 1 / 6; grid-row: 1 / 3; align-self: center; color: var(--ink); }
+    .record-main strong { max-width: 14em; font-size: clamp(1.7rem,3.2vw,3rem); font-weight: 800; line-height: 1.08; }
+    .record-a { grid-column: 7 / 10; }
+    .record-b { grid-column: 10 / 13; opacity: .82; }
+    .record-c { grid-column: 8 / 11; opacity: .62; }
+    .record-d { grid-column: 11 / 13; opacity: .45; }
+
+    .projects { position: relative; overflow: hidden; padding: 100px 0 118px; background: var(--ink); color: var(--paper); }
+    .projects-head { display: grid; grid-template-columns: .6fr 1fr; gap: 8vw; align-items: end; margin-bottom: 74px; }
+    .projects h2 { margin: 0; font-size: clamp(3.5rem, 7vw, 6.8rem); line-height: .9; }
+    .project-list { border-top: 3px solid var(--paper); }
+    .project { position: relative; min-height: 190px; display: grid; grid-template-columns: 120px 1.2fr 1fr auto; gap: clamp(20px, 4vw, 58px); align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(239,232,216,.42); }
+    .project::before { content: ""; position: absolute; z-index: 0; inset: 20px auto 20px -4vw; width: 0; background: var(--red); clip-path: polygon(0 0,95% 0,100% 100%,5% 100%); transition: width .18s ease-out; }
+    .project:hover::before, .project:focus-within::before { width: 70%; }
+    .project > * { position: relative; z-index: 1; }
+    .project-number { color: var(--signal); font-family: var(--font-latin); font-size: clamp(3.7rem, 6.5vw, 6.4rem); font-weight: 880; line-height: .75; letter-spacing: -.07em; }
+    .project-type { font-family: var(--font-latin); font-size: .61rem; font-weight: 650; line-height: 1; letter-spacing: .12em; }
+    .project h3 { margin: 10px 0 0; font-size: clamp(2rem, 3.6vw, 3.6rem); font-weight: 780; line-height: .95; letter-spacing: -.045em; overflow-wrap: anywhere; }
+    .project-title-latin { font-family: var(--font-latin); }
+    .project-title-cn { font-family: var(--font-cn); }
+    .project p { margin: 0; font-family: var(--font-cn); font-size: .88rem; font-weight: 400; }
+    .project a { padding: 9px 12px 7px; border: 2px solid currentColor; font-family: var(--font-latin); font-size: .66rem; font-weight: 700; line-height: 1; letter-spacing: .08em; text-decoration: none; clip-path: polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%); }
+    .project a:hover { background: var(--paper); color: var(--ink); }
+
+    .contact { min-height: 560px; position: relative; overflow: hidden; display: grid; align-items: center; }
+    .contact::before { content: ""; position: absolute; right: -18%; bottom: -58%; width: 58%; height: 150%; background: var(--signal); transform: rotate(-13deg); }
+    .contact-inner { position: relative; z-index: 2; display: grid; grid-template-columns: .8fr 1fr; gap: 10vw; align-items: center; }
+    .contact h2 { margin: 28px 0 0; font-size: clamp(4rem, 8vw, 7.2rem); line-height: .86; }
+    .contact-links { display: grid; gap: 12px; }
+    .contact-link { display: grid; grid-template-columns: 32px 1fr auto; gap: 18px; align-items: center; padding: 17px 20px; background: var(--ink); color: var(--paper); text-decoration: none; clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%); }
+    .contact-link:nth-child(2) { margin-left: 36px; background: var(--paper); color: var(--ink); border: 3px solid var(--ink); }
+    .contact-link span { font-family: var(--font-latin); font-size: .61rem; font-weight: 650; line-height: 1; }
+    .contact-link strong { font-family: var(--font-latin); font-size: clamp(1.2rem, 2.2vw, 1.8rem); font-weight: 750; line-height: 1; }
+    .contact-link:hover { background: var(--red); color: var(--paper); border-color: var(--red); }
+
+    .footer { display: flex; justify-content: space-between; gap: 18px; padding-block: 23px 34px; border-top: 5px solid var(--ink); font-family: var(--font-latin); font-size: .6rem; font-weight: 650; line-height: 1; letter-spacing: .1em; }
+
+    @keyframes cover-cut { from { transform: translateX(100%); } to { transform: none; } }
+    @keyframes name-reveal { to { clip-path: inset(0 0 0 0); } }
+    @keyframes portrait-reveal { to { clip-path: inset(0 0 0 0); } }
+
+    @media (max-width: 850px) {
+      .cover-copy { grid-column: 1 / 7; }
+      .portrait { grid-column: 7 / 12; width: min(38vw,360px); }
+      .project { grid-template-columns: 95px 1fr auto; }
+      .project p { grid-column: 2 / 4; }
+    }
+
+    @media (max-width: 580px) {
+      .page { width: calc(100% - 36px); }
+      .hero-nav { height: 56px; }
+      .nav-mark { display: none; }
+      .nav-links { width: 100%; justify-content: space-between; gap: 8px; }
+      .hero::after { width: 21%; clip-path: polygon(36% 0,100% 0,100% 100%,0 100%); }
+      .cover-inner { grid-template-rows: auto auto; align-content: center; gap: 32px; padding-block: 88px 50px; }
+      .cover-copy { grid-column: 1 / 13; }
+      .cover-copy h1 { font-size: clamp(4.3rem,22vw,6.3rem); }
+      .intro { max-width: 18em; margin-top: 32px; padding-left: 16px; font-size: .92rem; line-height: 1.85; }
+      .portrait { grid-column: 3 / 12; width: min(64vw,270px); justify-self: end; }
+      .cover-meta { right: 3%; bottom: 5%; font-size: .5rem; }
+      .about { min-height: 700px; }
+      .about::before { left: -64%; top: -18%; width: 96%; height: 72%; }
+      .about-inner { grid-template-columns: 1fr; padding-block: 84px; }
+      .about h2 { font-size: 15vw; }
+      .about-copy { width: 84%; margin: 64px 0 0 auto; padding-left: 19px; border-left-width: 7px; font-size: .97rem; }
+      .records { padding-block: 68px 72px; }
+      .records::after { inset: 38% -35% -25% 34%; transform: rotate(-8deg); }
+      .records-inner { grid-template-columns: repeat(6,minmax(0,1fr)); gap: 34px 14px; }
+      .record-main { grid-column: 1 / 6; grid-row: auto; }
+      .record-main strong { font-size: 1.8rem; }
+      .record-a { grid-column: 2 / 6; }
+      .record-b { grid-column: 3 / 7; }
+      .record-c { grid-column: 1 / 5; color: var(--paper); }
+      .record-d { grid-column: 3 / 7; }
+      .projects { padding: 76px 0 86px; }
+      .projects-head { grid-template-columns: 1fr; margin-bottom: 62px; }
+      .projects h2 { margin-top: 40px; font-size: 16vw; }
+      .project { min-height: 260px; grid-template-columns: 72px 1fr; gap: 14px 18px; padding: 26px 0; }
+      .project-number { grid-column: 1; grid-row: 1 / 3; font-size: 18vw; }
+      .project-copy, .project p, .project a { grid-column: 2; }
+      .project h3 { font-size: clamp(1.8rem,9vw,2.8rem); }
+      .project a { width: max-content; }
+      .project:hover::before, .project:focus-within::before { width: 112%; }
+      .contact { min-height: 620px; }
+      .contact::before { right: -62%; bottom: -35%; width: 130%; height: 78%; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .contact h2 { font-size: 21vw; }
+      .contact-links { width: 90%; margin: 88px 0 0 auto; }
+      .contact-link:nth-child(2) { margin-left: 22px; }
+      .footer { flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .cover-copy h1 { clip-path: none !important; }
+      .portrait { clip-path: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <main id="main">
+    <header class="hero" id="top" aria-labelledby="page-title">
+      <nav class="hero-nav" aria-label="主导航">
+        <div class="nav-inner page">
+          <a class="nav-mark" href="#top">Q / 01</a>
+          <div class="nav-links"><a href="#about">01 关于</a><a href="#projects">02 项目</a><a href="#contact">03 联系</a></div>
+        </div>
+      </nav>
+
+      <div class="cover-inner page">
+        <div class="cover-copy">
+          <h1 id="page-title">祁清玄</h1>
+          <p class="intro">学数学，也写代码。<br>读历史、古文、推理和科幻。<br>偶尔写点东西。</p>
+        </div>
+        <figure class="portrait">
+          <img src="./avatar.jpg" alt="祁清玄的头像" width="500" height="500">
+        </figure>
+      </div>
+      <div class="cover-meta">个人页面 / 第 01 号</div>
+    </header>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-inner page">
+        <div><div class="section-id">01 / 关于</div><h2 id="about-title">一些关于<br>我的事。</h2></div>
+        <p class="about-copy">学数学和计算，也读历史、古文、推理与科幻。想到什么时会记下来，偶尔写诗和散文。游戏也玩；Steam 打折的时候，判断力通常不太可靠。</p>
+      </div>
+    </section>
+
+    <section class="records" aria-label="档案记录">
+      <div class="records-inner page">
+        <p class="record record-main"><time datetime="2006">2006</time><strong>《时代周刊》年度风云人物</strong><small>TIME / PERSON OF THE YEAR</small></p>
+        <p class="record record-a"><time datetime="2008">2008</time><strong>感动中国组委会特别奖</strong></p>
+        <p class="record record-b"><time datetime="2022">2022</time><strong>奥林匹克杯联合获奖者</strong></p>
+        <p class="record record-c"><time datetime="2019">2019</time><strong>联合国地球卫士奖</strong><small>蚂蚁森林共建人</small></p>
+        <p class="record record-d"><time>长期有效</time><strong>诺贝尔文学奖终身读者</strong></p>
+      </div>
+    </section>
+
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="projects-head page"><div class="section-id">02 / 项目</div><h2 id="projects-title">正在做的。</h2></div>
+      <div class="project-list page">
+        <article class="project"><div class="project-number" aria-hidden="true">01</div><div class="project-copy"><span class="project-type">P / 01 · 数值计算</span><h3 class="project-title-latin">CDR Solver</h3></div><p>对流—扩散—反应方程有限元求解器。</p><a href="https://github.com/menghuainanfang/FEALPy-project-cdr-solver" target="_blank" rel="noopener noreferrer">GitHub ↗</a></article>
+        <article class="project"><div class="project-number" aria-hidden="true">02</div><div class="project-copy"><span class="project-type">P / 02 · 课程实践</span><h3 class="project-title-latin">Computational Learning</h3></div><p>课程概念、算法与代码实现。</p><a href="https://github.com/menghuainanfang/computational-learning" target="_blank" rel="noopener noreferrer">GitHub ↗</a></article>
+        <article class="project"><div class="project-number" aria-hidden="true">03</div><div class="project-copy"><span class="project-type">P / 03 · 实验记录</span><h3 class="project-title-latin">Prompt Engineering</h3></div><p>提示词与工作流实验。</p><a href="https://github.com/menghuainanfang/prompt-engineering" target="_blank" rel="noopener noreferrer">GitHub ↗</a></article>
+        <article class="project"><div class="project-number" aria-hidden="true">04</div><div class="project-copy"><span class="project-type">P / 04 · 个人空间</span><h3 class="project-title-cn">这座小站</h3></div><p>你现在看到的这一页。</p><a href="https://github.com/menghuainanfang/menghuainanfang.github.io" target="_blank" rel="noopener noreferrer">源码 ↗</a></article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-inner page">
+        <div><div class="section-id">03 / 联系</div><h2 id="contact-title">找到我。</h2></div>
+        <div class="contact-links">
+          <a class="contact-link" href="https://github.com/menghuainanfang" target="_blank" rel="noopener noreferrer"><span>01</span><strong>GitHub</strong><span aria-hidden="true">↗</span></a>
+          <a class="contact-link" href="https://space.bilibili.com/396293709" target="_blank" rel="noopener noreferrer"><span>02</span><strong>Bilibili</strong><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer page"><span>© <span id="year"></span> 祁清玄</span><span>Q / 01</span></footer>
+  <script>document.querySelector('#year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
